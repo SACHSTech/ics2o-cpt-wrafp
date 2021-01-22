@@ -1,16 +1,19 @@
 """ 
-A basic pygame template
+Name: main.py
+Purpose: To create a short and basic game which displays information about hardware and protection from viruses. 
+         Then when the game ends, there will be a quiz which tests the knowledge that was previously shown.
+
+Author: Huang.K
+
+Created:    date: 26/1/2021
 """
  
 import pygame
  
 # Function for the character
 # Define a function that will draw a stickman at a certain location
-def draw_stick_figure(screen, x, y):
-    # Head
-    pygame.draw.ellipse(screen, PURPLE, [x, y, 10, 10], 0)
-    pygame.draw.ellipse(screen, VIOLET, [18+x, 10+y, 15, 15], 0)
-    pygame.draw.ellipse(screen, VIOLET, [-14+x, 6+y, 14, 18], 0)
+# player = 
+    
 
 # Define some colors
 BLACK    = (   0,   0,   0)
@@ -36,8 +39,15 @@ clock = pygame.time.Clock()
 
 pygame.mouse.set_visible(0)
 
-pygame.image.load("character.png")
- 
+background_image = pygame.image.load("background.png").convert()
+player_image = pygame.image.load("character_robot_idle.png").convert()
+
+x_coord = 10
+y_coord = 10
+
+x_speed = 0
+y_speed = 0
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -45,23 +55,47 @@ while not done:
         if event.type == pygame.QUIT: # If user clicked close
             done = True # Flag that we are done so we exit this loop
   
+        # Create an if statement that gives instructions
+        # When a key is pressed (in this case: movement)
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_a or pygame.K_LEFT:
+                x_speed = -3
+            if event.key == pygame.K_d or pygame.K_RIGHT:
+                x_speed = 4
+            if event.key == pygame.K_w or pygame.K_UP:
+                y_speed = -3
+            if event.key == pygame.K_s or pygame.K_DOWN:
+                y_speed = 3
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_a or pygame.K_LEFT:
+                x_speed = 0
+            if event.key == pygame.K_d or pygame.K_RIGHT:
+                x_speed = 0
+            if event.key == pygame.K_w or pygame.K_UP:
+                y_speed = 0
+            if event.key == pygame.K_s or pygame.K_DOWN:
+                y_speed = 0
+
     # --- Game logic should go here
-    pos = pygame.mouse.get_pos()
-    x = pos[0]
-    y = pos[1]
+    x_coord += x_speed
+    y_coord += y_speed
+
+
     # --- Drawing code should go here
      
     # First, clear the screen to white or whatever background colour. 
     # Don't put other drawing commands above this, or they will be erased with this command.
-    screen.fill(WHITE)
-    draw_stick_figure(screen, x, y)
+    # blit takes a image in memory and loads it
+    screen.blit(background_image, [0, 0])
+    screen.blit(player_image, [20, 500])
      
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
     # --- Limit to 60 frames per second
-    clock.tick(60)
-     
+    clock.tick(20)
+      
 # Close the window and quit.
 # If you forget this line, the program will 'hang'
 # on exit if running from IDLE.
