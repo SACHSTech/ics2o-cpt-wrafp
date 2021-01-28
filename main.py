@@ -1,6 +1,6 @@
 """ 
 Name: main.py
-Purpose: To create a short and basic game which displays information about hardware and protection from viruses. 
+Purpose: To create a captcha and password lock that can be opened after required instructions. This short quiz tests course material we have learned throughout the quadmester.
          
 Author: Huang.K
 
@@ -127,8 +127,7 @@ while not done:
                         print("Incorrect. your score is", score)
                 
                     time.sleep(1.5)
-                    question_4 = int(input("\nQ4: What is an Operating System? \na) A macro program(1) \nb) A mouse or a keyboard(2) \nc) A system that helps organizes your files and stores information(3) \nd) Software that manages4
-                     hardware and software; and includes services(4)\n"))
+                    question_4 = int(input("\nQ4: What is an Operating System? \na) A macro program(1) \nb) A mouse or a keyboard(2) \nc) A system that helps organizes your files and stores information(3) \nd) Software that manages hardware and software; and includes services(4)\n"))
                     time.sleep(3)
                     if question_4 == 4:
                         score = score + 10
@@ -155,8 +154,7 @@ while not done:
                         print("Incorrect. your score is", score)
 
                     time.sleep(1.5)
-                    question_7 = int(input("\nQ7: What error type describes having incorrect grammar rules/incorrect execution in programming? \na) Logical Error(1) \nb) Syntax Error(2) \nc) Run Time Error(3) \nd) Grammar Error(4)\n2
-                    "))
+                    question_7 = int(input("\nQ7: What error type describes having incorrect grammar rules/incorrect execution in programming? \na) Logical Error(1) \nb) Syntax Error(2) \nc) Run Time Error(3) \nd) Grammar Error(4)\n"))
                     time.sleep(3)
                     if question_7 == 2:
                         score = score + 10
